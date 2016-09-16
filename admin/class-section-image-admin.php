@@ -64,32 +64,33 @@ class Section_Image_Admin {
 		}
 
 		$proper_name = ucwords( str_replace( '-', ' ', $taxonomy ) );
+		$plural_name = 'Media Categories';
 		$object_type = 'attachment';
 		$labels      = array(
-			'name'                  => $proper_name,
+			'name'                  => $plural_name,
 			'singular_name'         => $proper_name,
-			'menu_name'             => $proper_name,
-			'all_items'             => 'All ' . $proper_name,
+			'menu_name'             => $plural_name,
+			'all_items'             => 'All ' . $plural_name,
 			'edit_item'             => 'Edit ' . $proper_name,
 			'view_item'             => 'View ' . $proper_name,
 			'update_item'           => 'Update ' . $proper_name,
 			'add_new_item'          => 'Add New ' . $proper_name,
 			'new_item_name'         => 'New ' . $proper_name . ' Name',
-			'search_items'          => 'Search ' . $proper_name,
-			'popular_items'         => 'Popular ' . $proper_name,
+			'search_items'          => 'Search ' . $plural_name,
+			'popular_items'         => 'Popular ' . $plural_name,
 			'add_or_remove_items'   => 'Add or Remove ' . $proper_name,
-			'choose_from_most_used' => 'Most Used ' . $proper_name,
-			'not_found'             => 'No ' . $proper_name . ' Found',
+			'choose_from_most_used' => 'Most Used ' . $plural_name,
+			'not_found'             => 'No ' . $plural_name . ' Found',
 		);
 		$args        = array(
 			'public'                => true,
 			'show_ui'               => true,
 			'show_in_nav_menus'     => true,
-			'show_tagcloud'         => true,
+			'show_tagcloud'         => false,
 			'meta_box_cb'           => null,
 			'show_admin_column'     => true,
-			'hierarchical'          => false,
-			'update_count_callback' => null,
+			'hierarchical'          => true,
+			'update_count_callback' => '_update_generic_term_count',
 			'rewrite'               => true,
 			'sort'                  => null,
 			'labels'                => $labels,
