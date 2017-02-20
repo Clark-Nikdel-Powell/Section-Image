@@ -215,6 +215,7 @@ class Section_Image {
 			'numberposts' => 1,
 			'post_type'   => 'attachment',
 			'post_status' => 'any',
+			'orderby'     => 'rand',
 			'tax_query'   => [
 				[
 					'taxonomy'         => 'media-category',
