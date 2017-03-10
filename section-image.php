@@ -74,3 +74,9 @@ function get_section_image( $term ) {
 
 	return Section_Image::get_media_by_term( $term );
 }
+
+
+function find_section_image() {
+
+	return Section_Image::find_section_image();
+}

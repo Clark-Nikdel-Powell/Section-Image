@@ -234,4 +234,36 @@ class Section_Image {
 
 		return $term_image;
 	}
+
+	public static function find_section_image() {
+
+		$ancestor     = [];
+		$current_post = get_post();
+
+		if ( function_exists( '\CNP\get_highest_ancestor' ) ) {
+			$ancestor = \CNP\get_highest_ancestor();
+		}
+
+		$section_image_obj = false;
+		$section_image_id  = '';
+
+		if ( is_singular() ) {
+			$page_slug         = apply_filters( 'section_image_slug', $current_post->post_name );
+			$section_image_obj = get_section_image( $page_slug );
+		}
+
+		if ( false === $section_image_obj && ! empty( $ancestor ) ) {
+			$section_image_obj = get_section_image( $ancestor['name'] );
+		}
+
+		if ( false === $section_image_obj ) {
+			$section_image_obj = get_section_image( 'section-image' );
+		}
+
+		if ( ! empty( $section_image_obj ) ) {
+			$section_image_id = $section_image_obj[0]->ID;
+		}
+
+		return $section_image_id;
+	}
 }
