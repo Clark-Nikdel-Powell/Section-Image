@@ -257,7 +257,7 @@ class Section_Image {
 		}
 
 		if ( false === $section_image_obj ) {
-			$section_image_obj = get_section_image( 'section-image' );
+			$section_image_obj = get_section_image( apply_filters( 'section_image_slug', 'section-image' ) );
 		}
 
 		if ( ! empty( $section_image_obj ) ) {
